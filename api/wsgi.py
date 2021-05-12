@@ -1,4 +1,4 @@
-from services import app
+from api.services import app
 
 if __name__ == "__main__":
     app.run()
