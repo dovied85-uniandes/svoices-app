@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt, generate_password_hash, check_password_hash
 
 import enum
-import api.files
+import api.files as files
 import os
 import uuid
 
