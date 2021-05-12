@@ -1,13 +1,13 @@
 from datetime import date, datetime, timedelta
 
-from error import CustomValidationError
+from api.error import CustomValidationError
 
 from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt, generate_password_hash, check_password_hash
 
 import enum
-import files
+import api.files
 import os
 import uuid
 
