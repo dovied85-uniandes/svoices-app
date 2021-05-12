@@ -3,9 +3,9 @@ from celery.utils.log import get_task_logger
 
 from dotenv import load_dotenv
 
-from emails import get_email_client
+from batch.emails import get_email_client
 
-from utils import get_from_env
+from batch.utils import get_from_env
 
 import boto3
 import json
