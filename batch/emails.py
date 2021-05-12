@@ -3,7 +3,7 @@ from smtplib import SMTP, SMTPServerDisconnected
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, From, To, Subject, Content, SendGridException
 
-from utils import get_from_env
+from batch.utils import get_from_env
 
 import sendgrid
 
