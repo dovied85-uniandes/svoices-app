@@ -14,7 +14,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_cors import CORS
 
 import boto3
-import api.files
+import api.files as files
 import json
 import os
 
