@@ -120,7 +120,7 @@ logger = get_task_logger(__name__)
 task_period = float(get_from_env(envvar="TASK_PERIOD", default=60))
 app.conf.beat_schedule = {
     "Convert-audio-files": {
-        "task": "transcoder.convert_audios",
+        "task": "batch.transcoder.convert_audios",
         "schedule": task_period
     }
 }
