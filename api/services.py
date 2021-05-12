@@ -2,11 +2,11 @@ from boto3.dynamodb.conditions import Key, Attr
 
 from datetime import timedelta
 
-from db import Contest, User, Voice, table, Page
+from api.db import Contest, User, Voice, table, Page
 
 from dotenv import load_dotenv
 
-from error import CustomValidationError
+from api.error import CustomValidationError
 
 from flask import Flask, abort, jsonify, request
 from flask_bcrypt import Bcrypt
@@ -14,7 +14,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_cors import CORS
 
 import boto3
-import files
+import api.files
 import json
 import os
 
