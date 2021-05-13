@@ -133,9 +133,10 @@ def convert_audios():
         voices_updated = mark_converted(transcoded_voices)
 
         if voices_updated > 0:
+            if os.environ["NOTIFY_AUTHORS"] == "TRUE":
                 notify_authors(transcoded_voices)
-                entries = [{'Id': str(ind), 'ReceiptHandle': msg.receipt_handle} for ind, msg in enumerate(voices_to_process) if json.loads(msg.body)['id'] in [v['id'] for v in transcoded_voices]]
-                queue.delete_messages(Entries=entries)
+            entries = [{'Id': str(ind), 'ReceiptHandle': msg.receipt_handle} for ind, msg in enumerate(voices_to_process) if json.loads(msg.body)['id'] in [v['id'] for v in transcoded_voices]]
+            queue.delete_messages(Entries=entries)
 
         return "DONE with SUCCESS"
     except Exception as e:
