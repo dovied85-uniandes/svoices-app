@@ -1,4 +1,5 @@
 amqp==5.0.5
+APScheduler==3.7.0
 bcrypt==3.2.0
 billiard==3.6.3.0
 boto3==1.17.56
@@ -30,6 +31,7 @@ python-dotenv==0.17.0
 python-http-client==3.3.2
 pytz==2021.1
 redis==3.5.3
+requests==2.25.1
 s3transfer==0.4.1
 sendgrid==6.6.0
 simplejson==3.17.2
