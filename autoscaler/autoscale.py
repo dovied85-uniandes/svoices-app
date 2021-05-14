@@ -44,6 +44,7 @@ def get_current_dyno_qty():
         return None
 
 def get_queue_size():
+    queue.reload()
     return int(queue.attributes.get('ApproximateNumberOfMessages'))
 
 sched = BlockingScheduler()
