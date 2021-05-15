@@ -49,7 +49,7 @@ def get_queue_size():
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', seconds=os.environ["AUTOSCALING_INTERVAL"])
+@sched.scheduled_job('interval', seconds=int(os.environ["AUTOSCALING_INTERVAL"]))
 def job():
     queue_size = get_queue_size()
 
