@@ -56,8 +56,14 @@ def job():
     current_dynos = get_current_dyno_qty()
     if queue_size == 0:
         target_dynos = 0
+    elif queue_size < 100:
+        target_dynos = 1
+    elif queue_size < 300:
+        target_dynos = 2
+    elif queue_size < 600:
+        target_dynos = 3
     else:
-        target_dynos = min(int(queue_size / 100) + 1, MAX_WORKERS)
+        target_dynos = MAX_WORKERS
 
     if current_dynos != target_dynos:
         res = update_dyno_qty(target_dynos)
