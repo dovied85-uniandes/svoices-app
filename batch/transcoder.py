@@ -75,7 +75,7 @@ def transcode_voice(voice, media_dir):
         rel_target_path = voice["rel_target_path"]
         abs_target_path = os.path.join(media_dir, rel_target_path)
         logger.info(f"Convirtiendo archivo '{abs_source_path}' a: {abs_target_path}")
-        result = subprocess.run(["ffmpeg", "-y", "-i", 'audio_original', "-f", "mp3", voice.get("file_name", 'audio_convertido'))
+        result = subprocess.run(["ffmpeg", "-y", "-i", 'audio_original', "-f", "mp3", voice.get("file_name", 'audio_convertido')])
         if result.returncode == 0:
             s3resource.meta.client.upload_file("audio_convertido", s3_bucket_name, abs_target_path)
             return voice
