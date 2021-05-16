@@ -78,7 +78,7 @@ def transcode_voice(voice, media_dir):
         logger.info(f"Convirtiendo archivo '{abs_source_path}' a: {abs_target_path}")
         result = subprocess.run(["ffmpeg", "-y", "-i", 'audio_original', "-f", "mp3", file_name])
         if result.returncode == 0:
-            s3resource.meta.client.upload_file("audio_convertido", s3_bucket_name, abs_target_path)
+            s3resource.meta.client.upload_file(file_name, s3_bucket_name, abs_target_path)
             os.remove(file_name)
             return voice
     except Exception as e:
