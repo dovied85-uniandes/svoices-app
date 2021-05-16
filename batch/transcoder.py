@@ -14,6 +14,7 @@ import math
 import os
 import subprocess
 import time
+import logging
 
 audios_dir = get_from_env(envvar="AUDIO_FOLDER", default="var/svoice/media/audios")
 
@@ -32,6 +33,8 @@ dynamodb_table_name = os.environ["AWS_DYNAMODB_TABLE_NAME"]
 
 table = boto3.resource('dynamodb', region_name=dynamodb_table_region,
     aws_access_key_id=dynamodb_access_key_id, aws_secret_access_key=dynamodb_access_key_secret).Table(dynamodb_table_name)
+
+logging.basicConfig(level=logging.DEBUG)
 
 def create_batch():
     batch_name = get_from_env(envvar="BATCH_NAME", default="transcoder")
@@ -140,9 +143,11 @@ def convert_audio(voice):
     @return "DONE with SUCCESS" when the task completes without errors and "DONE with
     ERRORS" otherwise.
     """
+    logging.info(f"Comenzando conversión de voz {voice.get('file_name', '')}")
     start_time = time.time()
     try:
         converted_voice = transcode_voice(voice, audios_dir)
+        logging.info(f"Finalizada la conversión de voz {voice.get('file_name', '')}")
         voice_updated = mark_converted(converted_voice)
 
         if voice_updated and get_from_env(envvar="NOTIFY_AUTHORS", default="FALSE") == "TRUE":
