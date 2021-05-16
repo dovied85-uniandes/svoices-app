@@ -45,3 +45,4 @@ Werkzeug==1.0.1
 ndg-httpsclient
 pyopenssl
 pyasn1
+pycurl==7.43.0.5
