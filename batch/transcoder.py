@@ -143,7 +143,7 @@ def convert_audio(voice):
     @return "DONE with SUCCESS" when the task completes without errors and "DONE with
     ERRORS" otherwise.
     """
-    logging.info(f"Comenzando conversión de voz {voice.get('file_name', '')}")
+    logging.warning(f"Comenzando conversión de voz {voice.get('file_name', '')}")
     start_time = time.time()
     try:
         converted_voice = transcode_voice(voice, audios_dir)
@@ -155,5 +155,6 @@ def convert_audio(voice):
         return "DONE with SUCCESS"
     except Exception as e:
         logger.error(f"Error inesperado durante la ejecución de la tarea: {str(e)}")
+        logging.warning(f"Error en la conversión de voz {voice.get('file_name', '')}")
         handle_error(e, start_time)
         return "DONE with ERRORS"
