@@ -147,7 +147,7 @@ def convert_audio(voice):
     start_time = time.time()
     try:
         converted_voice = transcode_voice(voice, audios_dir)
-        logging.info(f"Finalizada la conversión de voz {voice.get('file_name', '')}")
+        logging.warning(f"Finalizada la conversión de voz {voice.get('file_name', '')}")
         voice_updated = mark_converted(converted_voice)
 
         if voice_updated and get_from_env(envvar="NOTIFY_AUTHORS", default="FALSE") == "TRUE":
